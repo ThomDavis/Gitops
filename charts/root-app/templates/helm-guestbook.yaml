@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-ingress
+  name: helm-guestbook
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/nginx/kubernetes-ingress/tree/v4.0.1/charts/nginx-ingress
-    chart: nginx-ingress
+    repoURL: https://gcr.io/heptio-images/ks-guestbook-demo
+    chart: helm-guestbook
     targetRevision: 4.0.1
     helm:
       values: |
@@ -16,7 +16,7 @@ spec:
           enabled: false
   destination:
     server: https://kubernetes.default.svc
-    namespace: apps
+    namespace: default
   syncPolicy:
     automated:
       prune: true
