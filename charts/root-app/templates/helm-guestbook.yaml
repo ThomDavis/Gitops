@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nginx/kubernetes-ingress/tree/v4.0.1/charts/nginx-ingress
+    chart: nginx-ingress
+    targetRevision: 4.0.1
+    helm:
+      values: |
+        pushgateway:
+          enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
