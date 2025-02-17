@@ -8,10 +8,6 @@ spec:
     chart: excalidraw
     repoURL: https://pmoscode-helm.github.io/excalidraw  # note: the oci:// syntax is not included.
     targetRevision: 0.1.0
-    helm:
-      parameters:
-        - name: ingress.enabled
-          value: 'true'
   destination:
     name: "in-cluster"
     namespace: default
