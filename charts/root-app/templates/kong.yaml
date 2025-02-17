@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: kong/ingress
+    chart: ingress
     repoURL: https://charts.konghq.com
     targetRevision: 0.18.0
   destination:
