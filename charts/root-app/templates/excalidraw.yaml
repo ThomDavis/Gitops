@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: excalidraw
+spec:
+  project: default
+  source:
+    chart: excalidraw
+    repoURL: https://pmoscode-helm.github.io/excalidraw  # note: the oci:// syntax is not included.
+    targetRevision: 0.1.0
+  destination:
+    name: "in-cluster"
+    namespace: default
